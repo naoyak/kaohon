@@ -1,3 +1,6 @@
 class Post < ActiveRecord::Base
-	belongs_to :user, class_name: "User"
+	belongs_to :user
+
+	validates :content, presence: true
+	validates :user_id, presence: true
 end
