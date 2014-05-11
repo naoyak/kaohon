@@ -1,0 +1,6 @@
+<% Post.all.order("created_at DESC").each do |post| %>
+	<% if current_user.friends?(User.find(post.user_id)) %>
+		<%= render post %>
+	<% end %>
+<% end %>
+	

@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   def show
     
     @posts = @user.posts.order("created_at DESC")
+    @post = current_user.posts.build if signed_in?
   end
+
 
   # GET /users/new
   def new
@@ -30,8 +32,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        sign_in @user
+        flash[:success] = "Signed up! You're now logged in."
+
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
+        
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -63,6 +69,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def friends
+      @user = User.find(params[:id])
+      @friends = @user.friends
+      render 'friends'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -72,5 +84,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :name)
+    end
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

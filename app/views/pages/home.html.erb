@@ -1,0 +1,36 @@
+
+<% if signed_in? %>
+	<h1>Hello! </h1>
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <strong>Username:</strong>
+	  <%= current_user.username %>
+	</p>
+
+	<p>
+	  <strong>Name:</strong>
+	  <%= current_user.name %>
+	</p>
+	<p><%= render 'pages/post_form' %></p>
+	
+
+	<div class="posts">
+		<strong>My posts</strong>
+		<%= render current_user.posts.order("created_at DESC") %>
+	</div>
+	<div class="posts">
+		<strong>Friends' posts</strong>
+		<%= render 'users/feed' %>
+	</div>
+
+	<%= link_to 'Edit', edit_user_path(current_user) %> |
+	<%= link_to 'Back', users_path %>
+<% else %>
+<h1>You aren't signed in.</h1>
+	<%= link_to "Sign up!", signup_path,
+                                class: "btn btn-large btn-primary" %>
+	<%= link_to "Sign in!", signin_path,
+                                class: "btn btn-large btn-primary" %>
+
+<% end %>

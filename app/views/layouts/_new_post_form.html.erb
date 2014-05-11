@@ -1,0 +1,10 @@
+<% form_for(@post), :html => {:class => "form-group"}) do |f| %>
+	<div class="field">
+	  <%= f.label :content %><br>
+	  <%= f.text_area :content, placeholder: "Write your post!" %>
+	</div>
+	
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
+<% end %>
