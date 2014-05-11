@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 			# sign user in...redirect to user.show
 			sign_in user
-			redirect_to user
+			redirect_to root_path
 		else
 			flash.now[:error] = 'invalid!'
 			render 'new'

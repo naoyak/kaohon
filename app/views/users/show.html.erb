@@ -20,7 +20,7 @@
 		<%= render 'pages/post_form' %>
 	<% end %>
 	<% unless current_user?(@user) %>
-		<span>current user: <%= current_user.name %></span>
+		
 		<% if !current_user.friends?(@user) %>
 			<%= form_for(current_user.friendships.build(friended_id: @user.id)) do |f| %>
 				<%= f.hidden_field :friended_id %>
@@ -35,10 +35,13 @@
 		<% end %>
 	<% end %>
 <% end %>
+<br /> 
 
 <div class="posts">
 	<%= render @posts %>
 </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<% if current_user?(@user) %>
+	<%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
 <%= link_to 'Back', users_path %>
