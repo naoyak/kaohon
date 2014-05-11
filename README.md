@@ -3,7 +3,7 @@ kaohon
 
 FB clone in Rails 4
 
-## Instructions
+### Instructions
 ```
 rake db:setup
 rake db:populate
@@ -13,7 +13,7 @@ Navigate to http://0.0.0.0/3000
 
 Sample data: users all have password 'password'
 
-## Packages
+### Gems used
 [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
 
 [faker](https://github.com/stympy/faker)
