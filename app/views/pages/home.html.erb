@@ -14,11 +14,6 @@
 	</p>
 	<p><%= render 'pages/post_form' %></p>
 	
-
-	<div class="posts">
-		<strong>My posts</strong>
-		<%= render current_user.posts.order("created_at DESC") %>
-	</div>
 	<div class="posts">
 		<strong>Friends' posts</strong>
 		<%= render 'users/feed' %>
