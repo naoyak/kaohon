@@ -27,10 +27,13 @@
 	<%= link_to 'Edit', edit_user_path(current_user) %> |
 	<%= link_to 'Back', users_path %>
 <% else %>
-<h1>You aren't signed in.</h1>
-	<%= link_to "Sign up!", signup_path,
-                                class: "btn btn-large btn-primary" %>
-	<%= link_to "Sign in!", signin_path,
-                                class: "btn btn-large btn-primary" %>
+<div class="jumbotron">
+	<h1>Welcome to Kaohon!</h1>
+	<p>Please sign in.</p>
+		<%= link_to "Sign up!", signup_path,
+	                                class: "btn btn-lg btn-primary", role: "button" %>
+		<%= link_to "Sign in!", signin_path,
+	                                class: "btn btn-lg btn-primary", role: "button" %>
+</div>
 
 <% end %>
