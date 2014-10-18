@@ -1,7 +1,7 @@
 kaohon
 ======
 
-FB clone in Rails 4
+FB clone in Rails 4 - for learning purposes
 
 ### Instructions
 ```
